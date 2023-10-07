@@ -80,7 +80,6 @@ def windows_menu():
         pass
 
     while True:
-        # ... (unchanged menu loop)
         print("\nMenu:")
         print("1. Notepad")
         print("2. Chrome")
