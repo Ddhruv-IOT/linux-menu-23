@@ -3,6 +3,7 @@ import os
 import pyttsx3
 import twitter
 import wikipediaapi
+import subprocess as sp
 # import medium
 import smtplib
 
@@ -11,7 +12,7 @@ def windows_menu():
         os.system("notepad.exe")
 
     def chrome():
-        webbrowser.open("https://www.google.com")
+        sp.getoutput(r"C:\Program Files\Google\Chrome\Application\chrome.exe")
 
     def whatsapp():
         webbrowser.open("https://web.whatsapp.com/")
