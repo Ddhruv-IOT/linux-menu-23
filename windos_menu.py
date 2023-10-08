@@ -6,6 +6,7 @@ import wikipediaapi
 import subprocess as sp
 # import medium
 import smtplib
+from geopy.geocoders import Nominatim
 
 def windows_menu():
     def notepad():
@@ -29,9 +30,13 @@ def windows_menu():
         # Your ChatGPT interaction logic here
         pass
 
-    def geolocation():
-        # Your geolocation logic here
-        pass
+    def geolocation(location):
+        geolocator = Nominatim(user_agent="geo_locator")
+        location = geolocator.geocode(location)
+        if location:
+            return location.latitude, location.longitude
+        else:
+            return None
 
     def get_twitter_trends():
         # Your Twitter trending topics logic here
@@ -113,7 +118,7 @@ def windows_menu():
         elif choice == '6':
             chatgpt()
         elif choice == '7':
-            geolocation()
+            geolocation(input("Enter location: "))
         elif choice == '8':
             get_twitter_trends()
         elif choice == '9':
