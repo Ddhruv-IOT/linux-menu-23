@@ -4,11 +4,14 @@ import pyttsx3
 import twitter
 import wikipediaapi
 import subprocess as sp
+import openai
 # import medium
 import smtplib
 from geopy.geocoders import Nominatim
 
 def windows_menu():
+    api_set = [False]
+    
     def notepad():
         os.system("notepad.exe")
 
@@ -27,14 +30,30 @@ def windows_menu():
         pass
 
     def chatgpt():
-        # Your ChatGPT interaction logic here
-        pass
+        if api_set[0] == False:
+            openai.api_key = input("Enter the API key for this Session")
+            api_set[0] = True
+        user_input = input("How may I help you ?")
+        response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo", # Use the appropriate model
+        messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": user_input},
+        ])
+        
+        assistant_response = response['choices'][0]['message']['content']
+        print(assistant_response)
 
     def geolocation(location):
         geolocator = Nominatim(user_agent="geo_locator")
         location = geolocator.geocode(location)
         if location:
-            return location.latitude, location.longitude
+            latitude, longitude = location.latitude, location.longitude
+            if latitude is not None and longitude is not None:
+                url = f"https://www.google.com/maps/search/?api=1&query={latitude},{longitude}"
+                webbrowser.open_new_tab(url)
+            else:
+                print("Coordinates not found for the given location.")
         else:
             return None
 
