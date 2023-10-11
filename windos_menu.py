@@ -33,7 +33,7 @@ def windows_menu():
         if api_set[0] == False:
             openai.api_key = input("Enter the API key for this Session")
             api_set[0] = True
-        user_input = input("How may I help you ?")
+        user_input = input("How may I help you ? ")
         response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", # Use the appropriate model
         messages=[
@@ -79,9 +79,11 @@ def windows_menu():
 
     def get_wikipedia_data():
         # Your Wikipedia data retrieval logic here
-        wiki_wiki = wikipediaapi.Wikipedia('en')
-        page_py = wiki_wiki.page("Python_(programming_language)")
-        print("Page text: %s" % page_py.text[:60])
+        wiki_wiki = wikipediaapi.Wikipedia('Your-App-Name/1.0')
+        page_py = wiki_wiki.page(input("Enter the topic: "))
+        print("Page text: %s" % page_py.text[:])
+        print("\n\n Press Enter to continue...")
+        input()
 
     def audio_player():
         # Your audio player logic here
@@ -93,14 +95,6 @@ def windows_menu():
 
     def control_speaker_sound():
         # Your speaker sound control logic here
-        pass
-
-    def post_linkedin():
-        # Your LinkedIn posting logic here
-        pass
-
-    def fill_form():
-        # Your form filling logic here
         pass
 
     while True:
@@ -118,8 +112,6 @@ def windows_menu():
         print("11. Audio Player")
         print("12. Video Player")
         print("13. Speaker Sound Control")
-        print("14. Post on LinkedIn")
-        print("15. Fill Form")
         print("0. Exit")
 
         choice = input("Enter your choice: ")
@@ -150,10 +142,6 @@ def windows_menu():
             video_player()
         elif choice == '13':
             control_speaker_sound()
-        elif choice == '14':
-            post_linkedin()
-        elif choice == '15':
-            fill_form()
         elif choice == '0':
             print("Exiting the program. Goodbye!")
             break
