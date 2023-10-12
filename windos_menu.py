@@ -8,6 +8,7 @@ import openai
 # import medium
 import smtplib
 from geopy.geocoders import Nominatim
+import music
 
 def windows_menu():
     api_set = [False]
@@ -86,12 +87,10 @@ def windows_menu():
         input()
 
     def audio_player():
-        # Your audio player logic here
-        pass
+        music.musica()
 
     def video_player():
-        # Your video player logic here
-        pass
+       pass
 
     def control_speaker_sound():
         # Your speaker sound control logic here
