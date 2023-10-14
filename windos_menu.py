@@ -9,6 +9,7 @@ import openai
 import smtplib
 from geopy.geocoders import Nominatim
 import music
+import email_er
 
 def windows_menu():
     api_set = [False]
@@ -23,8 +24,7 @@ def windows_menu():
         webbrowser.open("https://web.whatsapp.com/")
 
     def email():
-        # Your email sending logic here
-        pass
+        email_er.send_email()
 
     def sms():
         # Your SMS sending logic here
