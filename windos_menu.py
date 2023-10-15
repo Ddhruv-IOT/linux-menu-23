@@ -10,6 +10,11 @@ import smtplib
 from geopy.geocoders import Nominatim
 import music
 import email_er
+from twilio.rest import Client
+import pygame
+import sys
+import vlc
+import time
 
 def windows_menu():
     api_set = [False]
@@ -27,8 +32,27 @@ def windows_menu():
         email_er.send_email()
 
     def sms():
-        # Your SMS sending logic here
-        pass
+    # Get user input
+        account_sid = input("Enter your Twilio Account SID: ")
+        auth_token = input("Enter your Twilio Auth Token: ")
+        from_number = input("Enter your Twilio phone number (in E.164 format, e.g., +1234567890): ")
+        to_number = input("Enter the recipient's phone number (in E.164 format): ")
+        message = input("Enter the SMS message: ")
+
+        # Initialize Twilio client
+        client = Client(account_sid, auth_token)
+
+        try:
+            # Send the SMS
+            message = client.messages.create(
+                body=message,
+                from_=from_number,
+                to=to_number
+            )
+            print(f"SMS sent successfully. SID: {message.sid}")
+        except Exception as e:
+            print(f"Error: {e}")
+
 
     def chatgpt():
         if api_set[0] == False:
@@ -89,8 +113,17 @@ def windows_menu():
     def audio_player():
         music.musica()
 
-    def video_player():
-       pass
+    def video_player(vpth=r"C:\Users\Asus\Desktop\workspace\VD Recs\bandicam 2023-06-03 11-05-18-508.mp4"):
+        media_player = vlc.MediaPlayer(vpth)
+ 
+# start playing video
+        media_player.play()
+ 
+# wait so the video can be played for 5 seconds
+# irrespective for length of video
+        time.sleep(5)
+       
+    
 
     def control_speaker_sound():
         # Your speaker sound control logic here
