@@ -98,9 +98,12 @@ def windows_menu():
         for trend in trends[0]['trends']:
             print(trend['name'])
 
-    def get_hashtag_posts():
-        # Your hashtag posts retrieval logic here
-        pass
+    def get_hashtag_posts(hashtag):
+        # Construct the URL for Instagram hashtag search
+        instagram_url = f"https://www.instagram.com/explore/tags/{hashtag}/"
+        
+        # Open the web browser with the Instagram hashtag search page
+        webbrowser.open(instagram_url)
 
     def get_wikipedia_data():
         # Your Wikipedia data retrieval logic here
@@ -155,17 +158,21 @@ def windows_menu():
         elif choice == '3':
             whatsapp()
         elif choice == '4':
+            # NW 
             email()
         elif choice == '5':
+            # NW
             sms()
         elif choice == '6':
+            # NW
             chatgpt()
         elif choice == '7':
             geolocation(input("Enter location: "))
         elif choice == '8':
+            # NW
             get_twitter_trends()
         elif choice == '9':
-            get_hashtag_posts()
+            get_hashtag_posts(hashtag=input("Enter the hashtag: "))
         elif choice == '10':
             get_wikipedia_data()
         elif choice == '11':
