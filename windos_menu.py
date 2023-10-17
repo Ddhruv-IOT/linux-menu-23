@@ -15,6 +15,9 @@ import pygame
 import sys
 import vlc
 import time
+import requests
+import bs4
+from bs4 import BeautifulSoup
 
 def windows_menu():
     api_set = [False]
@@ -125,10 +128,38 @@ def windows_menu():
 # wait so the video can be played for 5 seconds
 # irrespective for length of video
         time.sleep(5)
-       
-    
+        
+    def get_top_instagram_posts(hashtag="India", num_posts=10):
+        # Construct the URL for Instagram hashtag search
+        instagram_url = f"https://www.instagram.com/explore/tags/{hashtag}/"
 
-    def control_speaker_sound():
+        # Fetch the HTML content of the hashtag search page
+        response = requests.get(instagram_url)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.text, 'html.parser')
+
+            # Extract post links from the page
+            post_links = [a['href'] for a in soup.find_all('a', {'href': True}) if '/p/' in a['href']]
+
+            # Take the top num_posts links
+            top_posts = post_links[:num_posts]
+            print(top_posts)
+            input("hit enter to continue....")
+
+            return top_posts
+        else:
+            print(f"Failed to fetch Instagram page. Status code: {response.status_code}")
+            return []
+
+           
+
+    def control_speaker_sound(text, volume=1.0):
+      
+        engine = pyttsx3.init()
+        engine.setProperty('volume', volume)
+        engine.say(text)
+        engine.runAndWait()
+
         # Your speaker sound control logic here
         pass
 
@@ -180,7 +211,12 @@ def windows_menu():
         elif choice == '12':
             video_player()
         elif choice == '13':
-            control_speaker_sound()
+            text_to_speak = input("Enter the text you want to hear: ")
+            volume_level = float(input("Enter the volume level (0.0 to 1.0): "))
+            control_speaker_sound(text_to_speak, volume_level)
+        elif choice == "14":
+            # NF
+            get_top_instagram_posts()
         elif choice == '0':
             print("Exiting the program. Goodbye!")
             break
