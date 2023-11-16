@@ -1,5 +1,14 @@
 # Linux Command Menu
 
+![Automation](https://img.shields.io/badge/Automation-Yes-blue.svg) ![Python Version](https://img.shields.io/badge/Python-3.9.1-blue.svg) ![RHEL 8](https://img.shields.io/badge/RHEL-8-orange.svg) ![RHEL 9](https://img.shields.io/badge/RHEL-9-orange.svg) ![Maintained](https://img.shields.io/badge/Maintained-Yes-green.svg) ![Stars](https://img.shields.io/github/stars/ddhruv-iot/linux-menu-23.svg?style=social) ![MIT License](https://img.shields.io/badge/License-MIT-red.svg)
+
+
+
+
+
+
+
+
 ## Overview
 
 The Linux Command Menu is a robust Python script designed to streamline and simplify Linux operations for users ranging from beginners to seasoned professionals. The project aims to provide an intuitive command-line menu interface, alleviating the need for memorizing intricate Linux commands and enhancing overall user experience.
@@ -21,6 +30,23 @@ The Linux Command Menu is a robust Python script designed to streamline and simp
 - **Visual Studio Code (VS Code):** Utilized for streamlined coding, debugging, and project management.
 
 - **Git and GitHub:** Employed for version control, collaborative development, and easy project maintenance.
+
+## Working
+The script provides a comprehensive set of options, each corresponding to a specific Linux operation. Here's an overview of some key functionalities:
+
+- Run Linux Commands: Execute custom Linux commands directly from the script.
+
+- Create Partition: Interactively create disk partitions, format them, and mount directories.
+
+- Create LVM: Perform Logical Volume Management (LVM) tasks, including creating volume groups and logical volumes.
+
+- Check Mounted Disk: View information about currently mounted disks.
+
+- Volume Group List: Display a list of volume groups on the system.
+
+- Yum Configure: Configure the Yum package manager for software installation.
+
+...and More: The menu includes additional options for tasks such as checking memory usage, starting services, working with files and directories, managing users and groups, and more.
 
 ## Getting Started
 
